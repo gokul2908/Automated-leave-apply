@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from time import sleep
 import os.path
+from getpass import getpass
 import tempfile
 
 db_file = os.path.join(tempfile.gettempdir(),
@@ -17,7 +18,7 @@ def get_input():
     except FileNotFoundError:
         with open(db_file, 'w') as file:
             user = input("Enter emailid")
-            pwd = input("Enter password")
+            pwd = getpass()
             file.write(user+ "\n"+ pwd)
     except: 
         print("failed to read the file")
